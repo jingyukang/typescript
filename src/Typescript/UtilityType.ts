@@ -110,7 +110,32 @@ export function UtilityType() {
   }
   //
   //
-  //Pick<T,K>
+  //Pick<T,K> => pick the keys(properties)
+  interface User4 {
+    id: number;
+    name: string;
+    age: number;
+    gender: "m" | "f";
+  }
+  const adminPick: Pick<User4, "id" | "name"> = {
+    id: 0,
+    name: "jin",
+  };
+  //Omit<T,K> => remove the keys(properties)
+  const adminOmit: Omit<User4, "age" | "gender"> = {
+    id: 1,
+    name: "jin",
+  };
+  //
+  //
+  //Exclude<T1,T2> copy the type 'T1' and create new type exclude the types in 'T2'
+  type T1 = string | number | boolean;
+  type T2 = Exclude<T1, number | string>;
+  //
+  //
+  // NonNullable<Type> copy the type 'Type' and create new type except 'null' and 'undefined'
+  type T3 = string | null | undefined | void;
+  type T4 = NonNullable<T3>;
 }
 
 // export default UtilityType;
